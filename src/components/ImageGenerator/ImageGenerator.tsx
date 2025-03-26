@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react";
-import OpenAI from "openai";
+import { FC, useState } from "react";
+import { OpenAI } from "openai";
+
 
 import Container from "../common/Container/Container";
 import Subtitle from "../common/Subtitle/Subtitle";
@@ -8,14 +9,12 @@ import ImageSearch from "../ImageSearch/ImageSearch";
 
 import styles from "./ImageGenerator.module.scss";
 
-const apiKey = process.env.REACT_APP_OPENAI_API_KEY
+const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
-const openai = new OpenAI(
-  {
-    apiKey: apiKey,
-    dangerouslyAllowBrowser: true 
-  }
-);
+const openai = new OpenAI({
+  apiKey: apiKey,
+  dangerouslyAllowBrowser: true
+});
 
 interface ImageGeneratorProps {}
 
