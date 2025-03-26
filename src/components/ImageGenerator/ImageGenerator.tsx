@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
-import { OpenAI } from "openai";
-
+import OpenAI from "openai";
 
 import Container from "../common/Container/Container";
 import Subtitle from "../common/Subtitle/Subtitle";
@@ -9,10 +8,8 @@ import ImageSearch from "../ImageSearch/ImageSearch";
 
 import styles from "./ImageGenerator.module.scss";
 
-const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-
 const openai = new OpenAI({
-  apiKey: apiKey,
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true
 });
 
