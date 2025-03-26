@@ -7,7 +7,7 @@ interface FooterPrivacyProps {}
 
 const FooterPrivacy: FC<FooterPrivacyProps> = () => (
   <div className={styles.FooterPrivacy}>
-    <p className={styles.FooterPrivacy__copyright}> Copyright &copy; 2021 </p>
+    <p className={styles.FooterPrivacy__copyright}> Copyright &copy; 2025 </p>
     <div className={styles.FooterPrivacy__policy}>
       <Link to={""}>Terms & Conditions</Link>
       <Link to={""}>Privacy Policy</Link>
