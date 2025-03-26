@@ -4,14 +4,18 @@
 .ProductCard {
   display: flex;
   flex-direction: column;
-  @include adaptiveValue("width", 270, 270);
+  width: rem(270);
   border-radius: 20px;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
+  &.fadeIn {
+    opacity: 0;
+    animation: fade-in 0.5s ease-in-out forwards;
+  }
 }
 .ProductCard__img {
-  @include adaptiveValue("width", 270, 270);
+  width: rem(270);
   height: rem(335);
   margin-left: auto;
   margin-right: auto;
@@ -67,9 +71,48 @@
   }
 }
 .ProductCard__button {
+  position: relative;
+  display: inline-block;
   width: rem(50);
   height: rem(50);
   background: $productColor;
   border-radius: rem(31);
   color: $productColor;
+  transition: transform 0.3s ease-in-out;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: rem(20);
+    height: rem(3);
+    background-color: $backgroundColor;
+    transform: translate(-50%, -50%);
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  &.active{
+    transform: rotate(45deg);
+    
+  }
+}
+
+@media (max-width: 440px) {
+  .ProductCard {
+    @include adaptiveValue("width", 270, 240);
+  }
+  .ProductCard__img {
+    @include adaptiveValue("width", 270, 240);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

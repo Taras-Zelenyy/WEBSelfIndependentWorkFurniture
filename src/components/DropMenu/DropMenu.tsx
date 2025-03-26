@@ -1,5 +1,11 @@
-import React, { FC, useState } from "react";
+import React, { FC, MouseEventHandler, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { RootState } from "../../store";
+import { toggleMenu } from "../../store/slices/menuSlice";
+import { scrollToSection } from "../../utils/scrollUtils";
+import { setActiveFilter } from "../../store/slices/productSlice";
 
 import styles from "./DropMenu.module.scss";
 
@@ -10,6 +16,21 @@ interface DropMenuProps {
 
 const DropMenu: FC<DropMenuProps> = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector(
+    (state: unknown) => (state as RootState).menu.isOpen
+  );
+
+  const handleClick =
+    (category: string, link: string): MouseEventHandler<HTMLAnchorElement> =>
+      (event) => {
+        event.preventDefault();
+        dispatch(setActiveFilter(category));
+        if (isMenuOpen) {
+          dispatch(toggleMenu());
+        }
+        scrollToSection(link);
+      };
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -50,7 +71,9 @@ const DropMenu: FC<DropMenuProps> = ({ title, items }) => {
       <ul className={styles.DropMenu__items}>
         {items.map(([item, link], index) => (
           <li className={styles.DropMenu__item} key={index}>
-            <Link to={link}>{item}</Link>
+            <a href={link} onClick={handleClick(item, link)}>
+              {item}
+            </a>
           </li>
         ))}
       </ul>

@@ -2,10 +2,9 @@
 @import "../../assets/styles/main.scss";
 
 .Hero {
+  position: relative;
   text-align: center;
-  background: url(../../assets/images/intro.webp);
-  background-position: center center;
+  background-position: center bottom;
   background-size: cover;
-  width: 100%;
-  height: rem(1085);
+  @include adaptiveValue("height", 1085, 1085);
 }

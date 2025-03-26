@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import Logo from "../Logo/Logo";
 import Navigation from "../../Navigation/Navigation";
-import ShopingCart from "../../ShopingCart/ShopingCart";
+import ShopingCart from "../../ShoppingCart/ShoppingCart";
 import MenuButton from "../../MenuButton/MenuButton";
 
 import styles from "./Header.module.scss";
@@ -15,8 +15,8 @@ const Header: FC<HeaderProps> = () => {
         <Logo isBlack={false}></Logo>
         <Navigation />
         <div className={styles.Header__buttons}>
-          <MenuButton />
           <ShopingCart />
+          <MenuButton />
         </div>
       </div>
     </header>
