@@ -1,0 +1,19 @@
+@import "./../main.scss";
+// Стилі для відзивчивих картинок (IBG)
+// Сніпет (HTML): ibg (div з картинкой і класами)
+// Сніпет (HTML): ibga (a з картинкой і класами)
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  // Прижимає footer
+  > main {
+    flex: 1 1 auto;
+  }
+  // Фікс для слайдерів
+  > * {
+    min-width: 0;
+  }
+}
+
